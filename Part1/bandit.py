@@ -18,7 +18,7 @@ def pull_arm(i) -> int:
 def pull_arm_dependent(i) -> int:
     """传入摇杆位置 i，返回结果 0/1，在摇动任何摇杆后，
     该摇杆下一次获奖几率变为 1，其余两个变为 0，初始值为 0 0 0"""
-    if not hasattr(pull_arm_dependent, 'former_choice'): #静态变量
+    if not hasattr(pull_arm_dependent, 'former_choice'): # 静态变量
         pull_arm_dependent.former_choice = 0
     if i == pull_arm_dependent.former_choice:
         pull_arm_dependent.former_choice = i
