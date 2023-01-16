@@ -1,4 +1,7 @@
 import random
+
+import numpy as np
+
 import bandit
 
 from scipy.stats import beta as Beta
@@ -19,9 +22,8 @@ def run(n, init_list) -> int:
 
     for t in range(1, n + 1):
         for j in range(1, 4):
-            tmp = random.random()
-            theta[j] = Beta.pdf(tmp, alpha[j], beta[j])
-        arm = theta.index(max(theta))
+            theta[j] = np.random.beta(alpha[j], beta[j])
+        arm = np.argmax(theta)
 
         tmp = bandit.pull_arm(arm)
 

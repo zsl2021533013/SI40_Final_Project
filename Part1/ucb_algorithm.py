@@ -15,9 +15,10 @@ def run(n, c) -> int:
     theta[3] = bandit.pull_arm(3)
 
     for t in range(4, n + 1):
-        tmp = theta
+        tmp = [0.0 for _ in range(4)]
+        tmp[0] = float("-inf")
         for j in range(1, 4):
-            tmp[j] += c * math.sqrt((2 * math.log2(t)) / count[j])
+            tmp[j] = theta[j] + c * math.sqrt((2 * math.log2(t)) / count[j])
         arm = tmp.index(max(tmp))
 
         tmp = bandit.pull_arm(arm)
