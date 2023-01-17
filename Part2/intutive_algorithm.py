@@ -12,7 +12,7 @@ def run(n, gamma, init_list) -> int:
     beta = [0.0 for _ in range(3)]
 
     alpha[1], beta[1] = init_list[0], init_list[1]
-    alpha[2], beta[2] = init_list[0], init_list[1]
+    alpha[2], beta[2] = init_list[2], init_list[3]
 
     for t in range(1, n + 1):
         expect[1] = alpha[1] / (alpha[1] + beta[1])
@@ -22,7 +22,9 @@ def run(n, gamma, init_list) -> int:
 
         tmp = two_arms_bandit.pull_arm(arm)
 
-        ans += pow(gamma, t - 1)
+        if tmp == 1:
+            ans += pow(gamma, t - 1)
+
         alpha[arm] += tmp
         beta[arm] += 1 - tmp
 

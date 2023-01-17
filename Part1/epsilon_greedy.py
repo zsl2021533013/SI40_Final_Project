@@ -1,4 +1,7 @@
 import random
+
+import numpy as np
+
 import bandit
 
 
@@ -16,7 +19,7 @@ def run(n, epsilon) -> int:
         if tmp < epsilon:
             arm = random.randint(1, 3)
         else:
-            arm = theta.index(max(theta))
+            arm = np.argmax(theta)
 
         tmp = bandit.pull_arm(arm)
 

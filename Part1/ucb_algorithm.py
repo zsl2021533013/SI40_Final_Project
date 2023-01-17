@@ -1,4 +1,7 @@
 import math
+
+import numpy as np
+
 import bandit
 
 
@@ -19,7 +22,7 @@ def run(n, c) -> int:
         tmp[0] = float("-inf")
         for j in range(1, 4):
             tmp[j] = theta[j] + c * math.sqrt((2 * math.log2(t)) / count[j])
-        arm = tmp.index(max(tmp))
+        arm = np.argmax(tmp)
 
         tmp = bandit.pull_arm(arm)
 

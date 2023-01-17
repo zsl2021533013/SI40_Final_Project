@@ -1,6 +1,5 @@
 import random
 
-
 def pull_arm(i) -> int:
     """传入摇杆位置 i，返回结果 0/1"""
 

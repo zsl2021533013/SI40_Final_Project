@@ -25,7 +25,7 @@ def run(n, init_list) -> int:
             theta[j] = np.random.beta(alpha[j], beta[j])
         arm = np.argmax(theta)
 
-        tmp = bandit.pull_arm(arm)
+        tmp = bandit.pull_arm_dependent(arm)
 
         ans += tmp
         alpha[arm] += tmp
